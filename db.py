@@ -4,12 +4,12 @@ from dotenv import load_dotenv
 
 load_dotenv()
 
-mydb = mysql.connector.connect(
+sql6462175 = mysql.connector.connect(
     host = environ["BOT_HOST"], 
     user = environ["BOT_USER"],
     password = environ["BOT_PASS"],
     port = environ["BOT_PORT"]
 )
 
-if(mydb):
+if(	sql6462175):
     print("Starting....")

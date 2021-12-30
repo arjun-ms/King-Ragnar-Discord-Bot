@@ -2,12 +2,12 @@ import discord
 from discord.ext import commands
 from discord.ext.commands.core import command
 from discord.utils import get
-from db import mydb
+from db import sql6462175
 import os
 from dotenv import load_dotenv
 
 load_dotenv()
-mycursor = mydb.cursor()
+mycursor = sql6462175.cursor()
 
 
 key = os.environ["KEY"]
@@ -71,7 +71,7 @@ async def role(ctx,*args):
 async def register(ctx,*args):
     if(len(args)>0):
         name = args[0]
-        mycursor.execute("USE mydb")
+        mycursor.execute("USE sql6462175")
         find_sql = "SELECT name FROM users WHERE name=%s"
         insert_sql = "INSERT INTO users (name) VALUES (%s)"
         val = (name,)
@@ -82,7 +82,7 @@ async def register(ctx,*args):
             print("Name already registered")
         else:
             mycursor.execute(insert_sql,val)
-            mydb.commit()
+            sql6462175.commit()
             await ctx.send("Name Registered Successfully")
             print("Name Registered Successfully")
 
@@ -93,7 +93,7 @@ async def register(ctx,*args):
 @client.command()
 @commands.has_role('arjunms')
 async def names(ctx):
-    mycursor.execute("USE mydb")
+    mycursor.execute("USE sql6462175")
     find_sql = "SELECT name FROM users"
     mycursor.execute(find_sql)
     data = mycursor.fetchall()
