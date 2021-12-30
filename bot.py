@@ -3,11 +3,14 @@ from discord.ext import commands
 from discord.ext.commands.core import command
 from discord.utils import get
 from db import mydb
+import os
+from dotenv import load_dotenv
 
+load_dotenv()
 mycursor = mydb.cursor()
 
-all_keys = open('key','r').read().splitlines()
-key = all_keys[0]
+
+key = os.environ["KEY"]
 
 
 intents = discord.Intents.all()             #let us know who is joining the server
