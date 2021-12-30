@@ -8,5 +8,6 @@ idna==3.3
 multidict==5.2.0
 mysql-connector-python==8.0.27
 protobuf==3.19.1
+python-dotenv==0.19.2
 typing-extensions==4.0.1
 yarl==1.7.2
