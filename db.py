@@ -8,6 +8,7 @@ mydb = mysql.connector.connect(
     host = environ["BOT_HOST"], 
     user = environ["BOT_USER"],
     password = environ["BOT_PASS"],
+    port = environ["BOT_PORT"]
 )
 
 if(mydb):
