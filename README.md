@@ -22,3 +22,21 @@ id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
 name VARCHAR(255)
 )
 ```
+
+### Screenshots
+*Bot welcoming new users*
+ 
+![discord1](/screenshots/discord1.png)
+ 
+*`!role rolename` - to get the specified role*
+ 
+![discord2](/screenshots/discord2.png)
+ 
+*`!register yourname` - to add yourname to the db*  
+*`!names` - to list all names in db(requires `arjunms` role)*
+ 
+![discord3](/screenshots/discord3.png)
+ 
+*Sending message when someone reacts*
+ 
+![discord4](/screenshots/discord4.png)
