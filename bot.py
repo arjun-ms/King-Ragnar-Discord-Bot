@@ -2,12 +2,12 @@ import discord
 from discord.ext import commands
 from discord.ext.commands.core import command
 from discord.utils import get
-from db import sql3463755
+from db import users,conn
 import os
 from dotenv import load_dotenv
 
 load_dotenv()
-mycursor = sql3463755.cursor()
+# mycursor = sql3463755.cursor()
 
 
 key = os.environ["KEY"]
@@ -76,18 +76,15 @@ async def role(ctx, *args):
 async def register(ctx, *args):
     if(len(args) > 0):
         name = args[0]
-        mycursor.execute("USE sql3463755")
-        find_sql = "SELECT name FROM users WHERE name=%s"
-        insert_sql = "INSERT INTO users (name) VALUES (%s)"
-        val = (name,)
-        mycursor.execute(find_sql, val)
-        data = mycursor.fetchall()
+        sel=users.select().filter_by(name=name)
+        data=conn.execute(sel).fetchall()
+        print(data)
         if(len(data) > 0):
             await ctx.send("Name already registered")
             print("Name already registered")
         else:
-            mycursor.execute(insert_sql, val)
-            sql3463755.commit()
+            ins = users.insert().values(name=name)
+            conn.execute(ins)
             await ctx.send("Name Registered Successfully")
             print("Name Registered Successfully")
 
@@ -97,11 +94,10 @@ async def register(ctx, *args):
 @client.command()
 @commands.has_role('arjunms')
 async def names(ctx):
-    mycursor.execute("USE sql3463755")
-    find_sql = "SELECT name FROM users"
-    mycursor.execute(find_sql)
-    data = mycursor.fetchall()
     username = ""
+    sel=users.select()
+    data = conn.execute(sel).fetchall()
+    print(data)
     for i in range(len(data)):
         username += data[i][0]+"\n"
     await ctx.send(username)
