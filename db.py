@@ -15,13 +15,16 @@ load_dotenv()
 # if(sql3463755):
 #     print("Starting....")
 
-host = environ["BOT_HOST"], 
-user = environ["BOT_USER"],
-password = environ["BOT_PASS"],
-port = environ["BOT_PORT"],
+host = environ["BOT_HOST"]
+user = environ["BOT_USER"]
+password = environ["BOT_PASS"]
+port = environ["BOT_PORT"]
 database = environ["BOT_DB"]
 
+
+
 url = f"mysql://{user}:{password}@{host}:3306/{database}"
+
 
 engine = create_engine(url,echo=False)
 print(url)
