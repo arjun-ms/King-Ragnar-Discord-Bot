@@ -16,3 +16,4 @@ SQLAlchemy==1.4.29
 toml==0.10.2
 typing-extensions==4.0.1
 yarl==1.7.2
+mysqlclient==2.1.0
