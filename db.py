@@ -22,3 +22,13 @@ port = environ["BOT_PORT"],
 database = environ["BOT_DB"]
 
 url = f"mysql://{user}:{password}@{host}:{port}/{database}"
+
+engine = create_engine(url,echo=False)
+print(url)
+meta =MetaData()
+conn =  engine.connect()
+
+users = Table('users',meta,
+            Column('id', Integer,primary_key=True),
+            Column('name', String))
+
