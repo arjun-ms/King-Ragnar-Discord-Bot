@@ -33,6 +33,6 @@ conn =  engine.connect()
 
 users = Table('users',meta,
             Column('id', Integer,primary_key=True),
-            Column('name', String),)
+            Column('name', String(50)),)
 
 meta.create_all(engine)
