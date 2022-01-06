@@ -99,7 +99,7 @@ async def names(ctx):
     data = conn.execute(sel).fetchall()
     print(data)
     for i in range(len(data)):
-        username += data[i][0]+"\n"
+        username += data[i][1]+"\n"
     await ctx.send(username)
 
 
